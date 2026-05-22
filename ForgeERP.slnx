@@ -1,0 +1,32 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ForgeERP.Api/ForgeERP.Api.csproj" />
+    <Project Path="src/ForgeERP.SharedKernel/ForgeERP.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/" />
+  <Folder Name="/src/Modules/Catalog/">
+    <Project Path="src/Modules/Catalog/ForgeERP.Catalog.Application/ForgeERP.Catalog.Application.csproj" />
+    <Project Path="src/Modules/Catalog/ForgeERP.Catalog.Domain/ForgeERP.Catalog.Domain.csproj" />
+    <Project Path="src/Modules/Catalog/ForgeERP.Catalog.Infrastructure/ForgeERP.Catalog.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Inventory/">
+    <Project Path="src/Modules/Inventory/ForgeERP.Inventory.Application/ForgeERP.Inventory.Application.csproj" />
+    <Project Path="src/Modules/Inventory/ForgeERP.Inventory.Domain/ForgeERP.Inventory.Domain.csproj" />
+    <Project Path="src/Modules/Inventory/ForgeERP.Inventory.Infrastructure/ForgeERP.Inventory.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Manufacturing/">
+    <Project Path="src/Modules/Manufacturing/ForgeERP.Manufacturing.Application/ForgeERP.Manufacturing.Application.csproj" />
+    <Project Path="src/Modules/Manufacturing/ForgeERP.Manufacturing.Domain/ForgeERP.Manufacturing.Domain.csproj" />
+    <Project Path="src/Modules/Manufacturing/ForgeERP.Manufacturing.Infrastructure/ForgeERP.Manufacturing.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Planning/">
+    <Project Path="src/Modules/Planning/ForgeERP.Planning.Application/ForgeERP.Planning.Application.csproj" />
+    <Project Path="src/Modules/Planning/ForgeERP.Planning.Domain/ForgeERP.Planning.Domain.csproj" />
+    <Project Path="src/Modules/Planning/ForgeERP.Planning.Infrastructure/ForgeERP.Planning.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Sales/">
+    <Project Path="src/Modules/Sales/ForgeERP.Sales.Application/ForgeERP.Sales.Application.csproj" />
+    <Project Path="src/Modules/Sales/ForgeERP.Sales.Domain/ForgeERP.Sales.Domain.csproj" />
+    <Project Path="src/Modules/Sales/ForgeERP.Sales.Infrastructure/ForgeERP.Sales.Infrastructure.csproj" />
+  </Folder>
+</Solution>
