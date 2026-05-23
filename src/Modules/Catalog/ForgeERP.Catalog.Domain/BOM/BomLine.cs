@@ -25,14 +25,22 @@ namespace ForgeERP.Catalog.Domain.BOM
         }
 
 
-        internal void UpdateQuantity(decimal quantity)
+        internal Result UpdateQuantity(decimal quantity)
         {
+            if (quantity <= 0)
+                return Result.Failure("quantity must be greater than 0.");
+
             Quantity = quantity;
+
+            return Result.Success();
         }
 
-        internal void UpdatePosition(int position)
+        internal Result UpdatePosition(int position)
         {
+            
             Position = position;
+
+            return Result.Success();
         }
 
 
