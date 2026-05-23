@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ForgeERP.Catalog.Domain
+namespace ForgeERP.Catalog.Domain.Item
 {
     public enum  ItemType
     {

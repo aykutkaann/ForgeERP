@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ForgeERP.Catalog.Domain
+namespace ForgeERP.Catalog.Domain.Item
 {
     public class Item : AggregateRoot<ItemId>
     {
