@@ -11,6 +11,8 @@ namespace ForgeERP.Catalog.Domain.Routing
 
         public static RoutingId New() => new(Guid.NewGuid());
 
+        private RoutingId() { }
+
 
     }
 }

@@ -10,5 +10,7 @@ namespace ForgeERP.Catalog.Domain.Routing
         public OperationId(Guid value) : base(value) { }
 
         public static OperationId New() => new(Guid.NewGuid());
+
+        private OperationId() { }
     }
 }

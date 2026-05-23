@@ -29,6 +29,7 @@ namespace ForgeERP.Catalog.Application.ItemUseCases.Handlers
                 ItemCode = item.ItemCode,
                 Name = item.Name,
                 UnitOfMeasure = item.UnitOfMeasure,
+                ItemType = item.ItemType.ToString(),
                 IsActive = item.IsActive
 
             }).ToList();

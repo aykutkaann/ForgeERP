@@ -1,4 +1,5 @@
 ﻿using ForgeERP.Catalog.Domain.BOM;
+using ForgeERP.Catalog.Domain.Item;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -19,7 +20,10 @@ namespace ForgeERP.Catalog.Infrastructure.Persistence.Configurations
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Id).HasConversion(bomIdConverter).ValueGeneratedNever();
 
-            builder.Property(x => x.ItemId).IsRequired();
+            var itemIdConverter = new ValueConverter<ItemId, Guid>(id => id.Value, value => new ItemId(value));
+
+
+            builder.Property(x => x.ItemId).IsRequired().HasConversion(itemIdConverter);
             builder.HasIndex(x => x.ItemId).IsUnique();
 
             builder.Property(x => x.Name).IsRequired().HasMaxLength(100);

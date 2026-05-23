@@ -13,7 +13,7 @@ namespace ForgeERP.Catalog.Infrastructure.Persistence
 
         public DbSet<Item> Items { get; init; }
         public DbSet<Bom> Boms { get; init; }
-        public DbSet<Routing> Routings { get; init; }
+     
 
 
 

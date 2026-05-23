@@ -10,5 +10,7 @@ namespace ForgeERP.Catalog.Domain.Item
         public ItemId(Guid value) : base(value) { }
 
         public static ItemId New() => new(Guid.NewGuid());
+
+        private ItemId() { }
     }
 }
