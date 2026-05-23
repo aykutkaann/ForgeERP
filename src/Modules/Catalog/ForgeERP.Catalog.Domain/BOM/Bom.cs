@@ -36,24 +36,24 @@ namespace ForgeERP.Catalog.Domain.BOM
             return Result<Bom>.Success(new Bom(BomId.New(), itemId, name));
         }
 
-        public Result AddLine(ItemId componentItemId, decimal quantity, int position)
+        public Result<BomLine> AddLine(ItemId componentItemId, decimal quantity, int position)
         {
             if (componentItemId == null)
-                return Result.Failure("Component Id is required.");
+                return Result<BomLine>.Failure("Component Id is required.");
 
             if (quantity <= 0)
-                return Result.Failure("BOM line has to be greater than  0");
+                return Result<BomLine>.Failure("BOM line has to be greater than  0");
 
             if (componentItemId == ItemId)
-                return Result.Failure("An item cannot be used for its own raw materials");
+                return Result<BomLine>.Failure("An item cannot be used for its own raw materials");
 
             if (_bomLines.Any(x => x.ComponentItemId == componentItemId))
-                return Result.Failure("This component is already added to this BOM");
+                return Result<BomLine>.Failure("This component is already added to this BOM");
 
             var newLine = new BomLine(Id, componentItemId, quantity, position);
 
             _bomLines.Add(newLine);
-            return Result.Success();
+            return Result<BomLine>.Success(newLine);
         }
 
         public Result RemoveLine(ItemId componentItemId)

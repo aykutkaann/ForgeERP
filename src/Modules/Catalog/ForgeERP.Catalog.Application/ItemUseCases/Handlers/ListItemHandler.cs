@@ -1,6 +1,6 @@
 ﻿using ForgeERP.Catalog.Application.ItemUseCases.DTOs;
 using ForgeERP.Catalog.Application.ItemUseCases.Interfaces;
-using ForgeERP.Catalog.Application.Queries;
+using ForgeERP.Catalog.Application.ItemUseCases.Queries;
 using ForgeERP.SharedKernel;
 using MediatR;
 using System;

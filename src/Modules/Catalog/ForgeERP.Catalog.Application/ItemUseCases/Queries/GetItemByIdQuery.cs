@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace ForgeERP.Catalog.Application.Queries
+namespace ForgeERP.Catalog.Application.ItemUseCases.Queries
 {
     public record GetItemByIdQuery(Guid Id) : IRequest<Result<ItemDto>>;
     
