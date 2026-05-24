@@ -14,9 +14,9 @@ namespace ForgeERP.Catalog.Application.BomUseCases.Handlers
     public class CreateBomHandler: IRequestHandler<CreateBomCommand, Result<BomDto>>
     {
         private readonly IBomRepository _bomRepository;
-        private readonly IUnitOfWork _uow;
+        private readonly ICatalogUnitOfWork _uow;
 
-        public CreateBomHandler(IBomRepository bomRepository, IUnitOfWork uow)
+        public CreateBomHandler(IBomRepository bomRepository, ICatalogUnitOfWork uow)
         {
             _bomRepository = bomRepository;
             _uow = uow;

@@ -7,7 +7,7 @@ namespace ForgeERP.Inventory.Domain.Stock
 {
     public class StockBalance :AggregateRoot<StockBalanceId>
     {
-        private readonly List<StockMovement> _stockMovement = new();
+        private readonly List<StockMovement> _stockMovements = new();
 
         public Guid ItemId { get; private set; }
         public string Warehouse { get; private set; }
@@ -21,7 +21,7 @@ namespace ForgeERP.Inventory.Domain.Stock
             }
         }
 
-        public IReadOnlyList<StockMovement> StockMovements => _stockMovement.AsReadOnly();
+        public IReadOnlyList<StockMovement> StockMovements => _stockMovements.AsReadOnly();
 
 
         private StockBalance() { }
@@ -55,7 +55,7 @@ namespace ForgeERP.Inventory.Domain.Stock
                 return Result.Failure("Reason cannot be empty.");
 
             QuantityOnHand += quantity;
-            _stockMovement.Add(new StockMovement(Id,MovementType.Receipt,quantity,reason));
+            _stockMovements.Add(new StockMovement(Id,MovementType.Receipt,quantity,reason));
 
             return Result.Success();
 
@@ -73,7 +73,7 @@ namespace ForgeERP.Inventory.Domain.Stock
 
             QuantityOnHand -= quantity;
 
-            _stockMovement.Add(new StockMovement(Id, MovementType.Issue, -quantity, reason));
+            _stockMovements.Add(new StockMovement(Id, MovementType.Issue, -quantity, reason));
 
             return Result.Success();
 

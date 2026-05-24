@@ -10,8 +10,8 @@ namespace ForgeERP.Catalog.Application.ItemUseCases.Handlers
     public class CreateItemHandler : IRequestHandler<CreateItemCommand, Result<Guid>>
     {
         private readonly IItemRepository _itemRepository;
-        private readonly IUnitOfWork _uow;
-        public CreateItemHandler(IItemRepository itemRepository,IUnitOfWork uow)
+        private readonly ICatalogUnitOfWork _uow;
+        public CreateItemHandler(IItemRepository itemRepository,ICatalogUnitOfWork uow)
         {
             _itemRepository = itemRepository;
             _uow = uow;

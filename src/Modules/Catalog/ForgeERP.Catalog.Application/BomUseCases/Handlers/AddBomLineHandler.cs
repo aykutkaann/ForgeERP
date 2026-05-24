@@ -17,8 +17,8 @@ namespace ForgeERP.Catalog.Application.BomUseCases.Handlers
     {
 
         private readonly IBomRepository _bomRepository;
-        private readonly IUnitOfWork _uow;
-        public AddBomLineHandler(IBomRepository bomRepository, IUnitOfWork uow)
+        private readonly ICatalogUnitOfWork _uow;
+        public AddBomLineHandler(IBomRepository bomRepository, ICatalogUnitOfWork uow)
         {
             _bomRepository = bomRepository;
             _uow = uow;

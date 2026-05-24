@@ -1,4 +1,5 @@
-﻿using ForgeERP.Catalog.Domain.BOM;
+﻿using ForgeERP.Catalog.Application;
+using ForgeERP.Catalog.Domain.BOM;
 using ForgeERP.Catalog.Domain.Item;
 using ForgeERP.Catalog.Domain.Routing;
 using ForgeERP.SharedKernel;
@@ -7,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ForgeERP.Catalog.Infrastructure.Persistence
 {
-    public class CatalogDbContext : DbContext, IUnitOfWork
+    public class CatalogDbContext : DbContext, ICatalogUnitOfWork
     {
         public CatalogDbContext(DbContextOptions<CatalogDbContext> options) : base(options) { }
 
