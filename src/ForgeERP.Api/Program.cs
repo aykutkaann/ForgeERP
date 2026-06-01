@@ -76,6 +76,27 @@ app.MapGet("/api/catalog/items", async (IMediator mediator) =>
     return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
 });
 
+app.MapPut("/api/catalog/items/{id:guid}", async (Guid id, UpdateItemCommand command, IMediator mediator) =>
+{
+
+    var commandWithId = command with { Id = id };
+    var result = await mediator.Send(commandWithId);
+
+    return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+});
+
+app.MapPost("/api/catalog/items/{id:guid}/deactivate", async (Guid id, DeactivateItemCommand command, IMediator mediator) =>
+{
+    var result = await mediator.Send(new DeactivateItemCommand(id));
+    return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+});
+
+app.MapPost("/api/catalog/items{id:guid}/activate", async (Guid id, ActivateItemCommand command, IMediator mediator) =>
+{
+    var result = await mediator.Send(new ActivateItemCommand(id));
+    return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+});
+
 //BOM endpoints
 
 app.MapPost("/api/catalog/boms", async (CreateBomCommand command, IMediator mediator) =>
