@@ -1,9 +1,11 @@
 using ForgeERP.Catalog.Application;
 using ForgeERP.Catalog.Application.BomUseCases.Commands;
 using ForgeERP.Catalog.Application.BomUseCases.Interfaces;
+using ForgeERP.Catalog.Application.BomUseCases.Queries;
 using ForgeERP.Catalog.Application.ItemUseCases.Commands;
 using ForgeERP.Catalog.Application.ItemUseCases.Interfaces;
 using ForgeERP.Catalog.Application.ItemUseCases.Queries;
+using ForgeERP.Catalog.Domain.BOM;
 using ForgeERP.Catalog.Infrastructure.Persistence;
 using ForgeERP.Catalog.Infrastructure.Repositories;
 using ForgeERP.Inventory.Application;
@@ -85,13 +87,13 @@ app.MapPut("/api/catalog/items/{id:guid}", async (Guid id, UpdateItemCommand com
     return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
 });
 
-app.MapPost("/api/catalog/items/{id:guid}/deactivate", async (Guid id, DeactivateItemCommand command, IMediator mediator) =>
+app.MapPost("/api/catalog/items/{id:guid}/deactivate", async (Guid id, IMediator mediator) =>
 {
     var result = await mediator.Send(new DeactivateItemCommand(id));
     return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
 });
 
-app.MapPost("/api/catalog/items{id:guid}/activate", async (Guid id, ActivateItemCommand command, IMediator mediator) =>
+app.MapPost("/api/catalog/items{id:guid}/activate", async (Guid id, IMediator mediator) =>
 {
     var result = await mediator.Send(new ActivateItemCommand(id));
     return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
@@ -112,6 +114,34 @@ app.MapPost("/api/catalog/boms/{id:guid}/lines", async (Guid id, AddBomLineComma
 
     var result = await mediator.Send(commandWithId);
     return result.IsSuccess ? Results.Created($"/api/catalog/boms/{id}/lines/{result.Value}", result.Value) : Results.BadRequest(result.Error);
+});
+
+app.MapGet("/api/catalog/boms/{id:guid}", async (Guid id, IMediator mediator) =>
+{
+    var result = await mediator.Send(new GetBomByIdQuery(id));
+    return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+});
+
+app.MapGet("/api/catalog/boms/by-item/{itemId:guid}", async (Guid itemId, IMediator mediator) =>
+{
+    var result = await mediator.Send(new GetBomByItemIdQuery(itemId));
+    return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+});
+
+app.MapDelete("/api/catalog/boms/{id:guid}/lines/{componentItemId:guid}", async (Guid id, Guid componentId, IMediator mediator) =>
+{
+    var result = await mediator.Send(new RemoveBomLineCommand(id, componentId));
+    return result.IsSuccess ? Results.Ok(result) : Results.BadRequest(result.Error);
+});
+
+app.MapPut("/api/catalog/boms/{id:guid}/lines/{componentItemId:guid}", async (Guid id, Guid componentId, UpdateBomLineQuantityCommand command, IMediator mediator) =>
+{
+
+    var commandWithIds = command with { BomId = id, ComponentId = componentId };
+
+    var result = await mediator.Send(commandWithIds);
+    return result.IsSuccess ? Results.Ok(result.Value) : Results.BadRequest(result.Error);
+
 });
 
 //----------------Inventory--------------------//
